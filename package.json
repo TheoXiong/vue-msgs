@@ -27,5 +27,13 @@
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheoXiong/vue-msgs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TheoXiong/vue-msgs/issues"
+  },
+  "homepage": "https://github.com/TheoXiong/vue-msgs#readme"
 }
