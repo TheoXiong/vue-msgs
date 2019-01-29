@@ -81,7 +81,6 @@ export default {
   font-family: inherit;
   border: 1px solid rgba(153, 217, 226, 0.7);
   border-radius: 4px;
-  box-shadow: 1px 1px 1px 0 rgba(200, 200, 200, 0.7);
   width: 320px;
   max-height: 64px;
   padding: 12px;

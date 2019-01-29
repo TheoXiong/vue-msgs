@@ -1,6 +1,6 @@
 {
   "name": "vue-msgs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A vue component of message",
   "main": "dist/vue-msg.min.js",
   "scripts": {
