@@ -11,6 +11,7 @@
            :class="[
              {
                'is-success': msgType === 'success',
+               'is-info': msgType === 'info',
                'is-warning': msgType === 'warning',
                'is-error': msgType === 'error'
              }
@@ -40,7 +41,7 @@ export default {
   },
   methods: {
     showMsg (type = '', info = '') {
-      if (!['success', 'warning', 'error'].includes(type)) {
+      if (!['success', 'info', 'warning', 'error'].includes(type)) {
         throw new Error('type is invalid!')
       }
       if (this.timer && this.isShowMsg) {
@@ -92,6 +93,11 @@ export default {
   background-color: #f0f9eb;
   border-color: #e1f3d8;
 }
+.is-info{
+  color: #909399;
+  background-color: #edf2fc;
+  border-color: #ebeef5;
+}
 .is-warning{
   color: #e6a23c;
   background-color: #fdf6ec;
@@ -106,13 +112,17 @@ export default {
 .toggle-msg-enter-active,
 .toggle-msg-leave-active{
   transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
 }
-.toggle-msg-enter{
-  transform: translateX(150%);
-  opacity: 0;
-}
+.toggle-msg-enter,
 .toggle-msg-leave-to{
-  transform: translateX(150%);
+  transform: translateX(120%);
+  -webkit-transform: translateX(120%);
+  -moz-transform: translateX(120%);
+  -ms-transform: translateX(120%);
+  -o-transform: translateX(120%);
   opacity: 0;
 }
 </style>

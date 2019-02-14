@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Demo</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+</head>
+<body>
+  <div id="app">
+    <button class="success" @click="show('success')">success</button> 
+    <button class="info" @click="show('info')">info</button> 
+    <button class="warning" @click="show('warning')">warning</button> 
+    <button class="error" @click="show('error')">error</button> 
+    <vue-msg ref="vueMsgSuccess"></vue-msg>
+    <vue-msg ref="vueMsgInfo" :top="128"></vue-msg>
+    <vue-msg ref="vueMsgWarning" :top="192"></vue-msg>
+    <vue-msg ref="vueMsgError" :top="256"></vue-msg>
+  </div>
+  <script type="text/javascript" src="/index.min.js"></script>
+</body>
+</html>
