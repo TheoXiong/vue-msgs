@@ -1,11 +1,11 @@
 {
   "name": "vue-msgs",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A vue component of message",
   "main": "dist/vue-msg.min.js",
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "demo": "webpack --config example/webpack.demo.conf.js && node example/server/server.js"
+    "dev": "webpack --config example/webpack.demo.conf.js && node example/server/server.js"
   },
   "keywords": [
     "message",

@@ -31,7 +31,10 @@ export default {
       isShowMsg: false,
       timer: null,
       msgType: '',
-      msgData: ''
+      msgData: '',
+      msgQueue: [],
+      watchTimer: null,
+      pending: false
     }
   },
   props: {
@@ -39,21 +42,49 @@ export default {
     top: { type: Number, default: 64 },
     right: { type: Number, default: 8 }
   },
+  mounted () {
+    this.startWatch()
+  },
+  beforeDestroy () {
+    this.stopWatch()
+  },
   methods: {
     showMsg (type = '', info = '') {
       if (!['success', 'info', 'warning', 'error'].includes(type)) {
         throw new Error('type is invalid!')
       }
-      if (this.timer && this.isShowMsg) {
-        clearTimeout(this.timer)
-      }
-      this.timer = setTimeout(() => {
-        this.isShowMsg = false
-      }, this.timeout)
-
-      this.msgType = type
-      this.msgData = info
-      this.isShowMsg = true
+      this.msgQueue.push({ type, info })
+    },
+    startWatch () {
+      this.watchTimer = setInterval(() => {
+        if (this.pending) return
+        if (this.msgQueue.length > 0) {
+          this.pending = true
+          let msg = this.msgQueue.shift()
+          this.close()
+            .then(() => {
+              this.timer = setTimeout(() => { this.isShowMsg = false }, this.timeout)
+              this.msgType = msg.type
+              this.msgData = msg.info
+              this.isShowMsg = true
+              setTimeout(() => { this.pending = false }, 1300)
+            })
+        }
+      }, 100)
+    },
+    stopWatch () {
+      this.watchTimer ? clearInterval(this.watchTimer) : ''
+    },
+    close () {
+      return new Promise((resolve, reject) => {
+        if (this.isShowMsg) {
+          this.timer ? clearTimeout(this.timer) : ''
+          this.isShowMsg = false
+          setTimeout(() => { resolve() }, 300)
+        } else {
+          return resolve()
+        }
+      })
     },
     afterEnter () {
       this.$emit('afterEnter')
@@ -73,7 +104,7 @@ export default {
   padding: 0;
   position: fixed;
   max-height: 64px;
-  max-width: 320px;
+  max-width: 342px;
   overflow: hidden;
   z-index: 9999;
 }
@@ -84,7 +115,7 @@ export default {
   border-radius: 4px;
   width: 320px;
   max-height: 64px;
-  padding: 12px;
+  padding: 10px;
   word-wrap:break-word;
   overflow: hidden;
 }

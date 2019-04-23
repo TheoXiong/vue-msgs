@@ -7,7 +7,7 @@ Vue.use(VueMsg)
 const vm = new Vue({
   el: '#app',
   data: {
-      msg: 'app'
+    msg: 'app'
   },
   mounted: function() {
   },
@@ -16,15 +16,14 @@ const vm = new Vue({
   methods: {
     show (type) {
       if (type === 'success') {
-        this.$refs.vueMsgSuccess.showMsg('success', 'vue-msgs is a component of message show.')
+        this.$showMsg('success', 'vue-msgs is a component of message show.')
       } else if (type === 'info') {
-        this.$refs.vueMsgInfo.showMsg('info', 'vue-msgs is a component of message show.')
+        this.$showMsg('info', 'vue-msgs is a component of message show.')
       } else if (type === 'warning') {
-        this.$refs.vueMsgWarning.showMsg('warning', 'vue-msgs is a component of message show.')
+        this.$showMsg('warning', 'vue-msgs is a component of message show.')
       } else if (type === 'error') {
-        this.$refs.vueMsgError.showMsg('error', 'vue-msgs is a component of message show.')
+        this.$showMsg('error', 'vue-msgs is a component of message show.')
       }
     }
-  },
- 
+  }
 })
